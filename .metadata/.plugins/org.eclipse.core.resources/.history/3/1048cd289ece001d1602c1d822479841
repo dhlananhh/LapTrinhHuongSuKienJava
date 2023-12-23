@@ -1,0 +1,285 @@
+package quanLySach_GK;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.plaf.DimensionUIResource;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class GUI extends JFrame implements ActionListener {
+	private JPanel pnContent, pnNorth, pnCenter, pnSouth;
+	private JLabel lblMaSach, lblTenSach, lblSoTrang, lblTheLoai, lblNhaXB, lblTimKiem;
+	private JTextField txtMaSach, txtTenSach, txtSoTrang, txtNhaXB, txtTimKiem;
+	private JButton btnThem, btnXoaTrang, btnXoa, btnLuu, btnTim;
+	private JComboBox<String> cmbTheLoai;
+	private DanhMucSach ds;
+	private Database database;
+	private DefaultTableModel model;
+	private JTable table;
+	
+	
+	public GUI() {
+		super("Quan ly sach");
+		buildGUI();
+	}
+	
+	
+	public void buildGUI() {
+		setTitle("Kiểm tra Giữa kỳ - Dương Hoàng Lan Anh - 21087481 - DHKTPM17CTT");
+		setSize(750, 600);
+		setResizable(false);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+		createAndDisplayGUI();
+	}
+	
+	
+	public void createAndDisplayGUI() {
+		// panel content
+		pnContent = new JPanel();
+		pnContent.setLayout(new BorderLayout());
+		
+		// panel north
+		pnNorth = new JPanel();
+		pnNorth.add(Box.createRigidArea(new Dimension(0, 50)));
+		JLabel heading = new JLabel("THÔNG TIN SÁCH");
+		pnNorth.add(heading);
+		pnContent.add(pnNorth, BorderLayout.NORTH);
+		heading.setFont(new Font("Arial", Font.BOLD, 25));
+		heading.setForeground(Color.BLUE);
+		
+		// panel center
+		pnCenter = new JPanel();
+		pnContent.add(pnCenter, BorderLayout.CENTER);
+		
+		JPanel pnInfo = new JPanel();
+		pnInfo.setLayout(new GridLayout());
+		pnCenter.add(pnInfo);
+		
+		Box b = Box.createVerticalBox();
+		Box b1 = Box.createHorizontalBox();
+		Box b2 = Box.createHorizontalBox();
+		Box b3 = Box.createHorizontalBox();
+		Box b4 = Box.createHorizontalBox();
+		
+		lblMaSach = new JLabel("Mã sách: ");
+		txtMaSach = new JTextField(20);
+		b1.add(lblMaSach);
+		b1.add(txtMaSach);
+		
+		lblTenSach = new JLabel("Tên sách: ");
+		txtTenSach = new JTextField(20);
+		lblSoTrang = new JLabel("Số trang: ");
+		txtSoTrang = new JTextField(20);
+		b2.add(lblTenSach);
+		b2.add(txtTenSach);
+		b2.add(Box.createHorizontalStrut(30));
+		b2.add(lblSoTrang);
+		b2.add(txtSoTrang);
+		
+		lblTheLoai = new JLabel("Thể loại: ");
+		cmbTheLoai = new JComboBox<String>();
+		cmbTheLoai.addItem("Toán");
+		cmbTheLoai.addItem("Tin học");
+		b3.add(lblTheLoai);
+		b3.add(cmbTheLoai);
+		b3.add(Box.createHorizontalStrut(500));
+		
+		lblNhaXB = new JLabel("Nhà xuất bản: ");
+		txtNhaXB = new JTextField(20);
+		b4.add(lblNhaXB);
+		b4.add(txtNhaXB);
+		
+		lblMaSach.setPreferredSize(lblNhaXB.getPreferredSize());
+		lblTenSach.setPreferredSize(lblNhaXB.getPreferredSize());
+		lblTheLoai.setPreferredSize(lblNhaXB.getPreferredSize());
+		
+		pnInfo.add(b);
+		b.add(b1);
+		b.add(Box.createRigidArea(new DimensionUIResource(0, 10)));
+		b.add(b2);
+		b.add(Box.createRigidArea(new DimensionUIResource(0, 10)));
+		b.add(b3);
+		b.add(Box.createRigidArea(new DimensionUIResource(0, 10)));
+		b.add(b4);
+		b.add(Box.createRigidArea(new DimensionUIResource(0, 10)));
+		
+		createTable();
+		
+		// panel south
+		pnSouth = new JPanel();
+		JSplitPane splitPane;
+		pnContent.add(splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT), BorderLayout.SOUTH);
+		splitPane.setResizeWeight(0.5);
+		
+		JPanel pnTimKiem = new JPanel();
+		lblTimKiem = new JLabel("Nhập mã sách cần tìm: ");
+		txtTimKiem = new JTextField(20);
+		btnTim = new JButton("Tìm");
+		pnTimKiem.add(lblTimKiem);
+		pnTimKiem.add(txtTimKiem);
+		pnTimKiem.add(btnTim);
+		splitPane.add(pnTimKiem);
+		
+		JPanel pnChucNang = new JPanel();
+		btnThem = new JButton("Thêm");
+		btnXoaTrang = new JButton("Xóa trắng");
+		btnXoa = new JButton("Xóa");
+		btnLuu = new JButton("Lưu");
+		
+		pnChucNang.add(btnThem);
+		pnChucNang.add(btnXoa);
+		pnChucNang.add(btnXoaTrang);
+		pnChucNang.add(btnLuu);
+		splitPane.add(pnChucNang);
+		
+		btnThem.addActionListener(this);
+		btnXoaTrang.addActionListener(this);
+		btnXoa.addActionListener(this);
+		btnLuu.addActionListener(this);
+		
+		// create container
+		Container container = getContentPane();
+		container.add(pnContent);
+	}
+	
+	
+	public void createTable() {
+		JPanel pnTable = new JPanel();
+		model = new DefaultTableModel();
+		table = new JTable(model);
+		model.addColumn("Mã sách");
+		model.addColumn("Tên sách");
+		model.addColumn("Số trang");
+		model.addColumn("Thể loại");
+		model.addColumn("Nhà xuất bản");
+			
+		TableColumn columnTheLoai = table.getColumnModel().getColumn(3);
+		JComboBox comboBox = new JComboBox();
+		String[] listTheLoai = {"Toán", "Văn", "Tin học"};
+		
+		
+		for (int i=0; i<listTheLoai.length; i++) {
+			cmbTheLoai.addItem(listTheLoai[i]);
+		}
+		columnTheLoai.setCellEditor(new DefaultCellEditor(comboBox));
+		
+		JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setPreferredSize(new Dimension(500, 200));
+		pnCenter.add(scrollPane);
+		pnCenter.add(pnTable);
+	}
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Object o = e.getSource();
+		if (o.equals(btnThem)) {
+			if (btnThem.getText().equals("Thêm")) {
+				xoaTrang();
+				txtMaSach.requestFocus();
+				btnXoa.setEnabled(false);
+				btnThem.setText("Hủy");
+			} else {
+				btnXoa.setEnabled(true);
+				btnThem.setText("Thêm");
+			}
+		} else if (o.equals( btnLuu)) {
+			if (txtMaSach.getText().equals("") || txtTenSach.getText().equals("") || txtSoTrang.getText().equals("") || txtNhaXB.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Bạn chưa nhập thông tin !");
+			} else {
+				try {
+					luu();
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+			xoaTrang();
+			txtMaSach.requestFocus();
+			this.btnThem.setText("Thêm");
+			this.btnXoa.setEnabled(true);
+		} else if (o.equals(btnXoa)) {
+			try {
+				xoaDong();
+			} catch (Exception exc) {
+				exc.printStackTrace();
+			}
+		} else if (o.equals(btnXoaTrang)) {
+			xoaTrang();
+		} else if (o.equals(btnTim)) {
+			int pos = ds.timKiemSach(this.txtTimKiem.getText());
+			if (pos == -1) {
+				JOptionPane.showMessageDialog(this, "Không tồn tại nhân viên có mã này !");
+			} else {
+				table.setRowSelectionInterval(pos, pos);
+			}
+		}
+	}
+	
+	
+	public void luu() throws Exception {
+		String ma = txtMaSach.getText();
+		String ten = txtTenSach.getText();
+		String soTrang = txtSoTrang.getText();
+		String theLoai = (String) cmbTheLoai.getSelectedItem();
+		String nhaXB = txtNhaXB.getText();
+		
+		Sach sach = new Sach(ma, ten, Integer.parseInt(soTrang), theLoai, nhaXB);
+		if (ds.themSach(sach)) {
+			JOptionPane.showMessageDialog(this, "Thêm thành công");
+			String[] row = {ma, ten, soTrang, theLoai, nhaXB};
+			model.addRow(row);
+			
+			database.writeBook("Books.txt", ds);
+		} else {
+			JOptionPane.showMessageDialog(this, "ID này tồn tại");
+			txtMaSach.setText("");
+			txtMaSach.requestFocus();
+		}
+	}
+	
+	
+	public void xoaDong() throws Exception {
+		int r = table.getSelectedRow();
+		if (r != -1) {
+			int tb = JOptionPane.showConfirmDialog(null, "Bạn chắc chắn muốn xóa dòng này không ?", "Delete", JOptionPane.YES_NO_OPTION);
+			if (tb == JOptionPane.YES_OPTION) {
+				ds.xoaViTri(r);
+				model.removeRow(r);
+				xoaTrang();
+//				database.saveFile("NhanVien.dat", ds);
+				database.writeBook("Nhanvien.txt", ds);
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Bạn chưa chọn dòng cần xóa !");
+		}
+	}
+	
+	
+	
+	public void save() throws Exception {
+		database.writeBook("NhanVien.txt", ds);
+	}
+	
+	
+	public void xoaTrang() {
+		txtMaSach.setText("");
+		txtTenSach.setText("");
+		txtSoTrang.setText("");
+		txtNhaXB.setText("");
+		txtMaSach.requestFocus();
+	}
+	
+	
+	public static void main(String[] args) {
+		new GUI().setVisible(true);
+	}
+}

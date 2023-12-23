@@ -1,0 +1,25 @@
+package duongHoangLanAnh_21087481_tuan2;
+
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+
+public class PhongToChuc extends JFrame implements ActionListener {
+	public PhongToChuc() {
+		setTitle("Phòng tổ chức");
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

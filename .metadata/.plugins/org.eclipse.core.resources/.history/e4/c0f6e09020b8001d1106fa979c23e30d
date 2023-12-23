@@ -1,0 +1,7 @@
+package duongHoangLanAnh_21087481_tuan2;
+
+import javax.swing.JFrame;
+
+public class PhongToChuc extends JFrame  {
+
+}

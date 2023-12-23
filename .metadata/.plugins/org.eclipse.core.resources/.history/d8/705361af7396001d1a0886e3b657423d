@@ -1,0 +1,9 @@
+package demo.gui;
+
+import javax.swing.JFrame;
+
+public class BorderDemo {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+	}
+}

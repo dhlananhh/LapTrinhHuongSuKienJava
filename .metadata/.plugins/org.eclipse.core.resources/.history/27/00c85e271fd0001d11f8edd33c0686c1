@@ -1,0 +1,11 @@
+package quanLyMayTinh;
+
+
+import java.awt.*;
+import javax.swing.*;
+
+
+
+public class quanly_MAYTINH {
+
+}

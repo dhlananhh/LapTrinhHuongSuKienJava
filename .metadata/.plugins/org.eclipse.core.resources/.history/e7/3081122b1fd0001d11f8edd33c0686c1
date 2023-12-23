@@ -1,0 +1,11 @@
+package quanLyMayTinh;
+
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+
+public class quanly_MAYTINH extends JFrame implements ActionListener {
+
+}

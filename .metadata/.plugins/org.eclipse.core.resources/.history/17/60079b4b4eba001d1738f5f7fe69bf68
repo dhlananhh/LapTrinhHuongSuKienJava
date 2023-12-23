@@ -1,0 +1,91 @@
+package duongHoangLanAnh_21087481_tuan3;
+
+public class NhanVien {
+	private String maNV;
+	private String hoNV;
+	private String tenNV;
+	private String phai;
+	private int tuoi;
+	private double tienLuong;
+	
+
+	public NhanVien(String maNV, String hoNV, String tenNV, String phai, int tuoi, double tienLuong) {
+		super();
+		this.maNV = maNV;
+		this.hoNV = hoNV;
+		this.tenNV = tenNV;
+		this.phai = phai;
+		this.tuoi = tuoi;
+		this.tienLuong = tienLuong;
+	}
+
+
+	public String getMaNV() {
+		return maNV;
+	}
+
+
+	public void setMaNV(String maNV) {
+		this.maNV = maNV;
+	}
+
+
+	public String getHoNV() {
+		return hoNV;
+	}
+
+
+	public void setHoNV(String hoNV) {
+		this.hoNV = hoNV;
+	}
+
+
+	public String getTenNV() {
+		return tenNV;
+	}
+
+
+	public void setTenNV(String tenNV) {
+		this.tenNV = tenNV;
+	}
+
+
+	public String getPhai() {
+		return phai;
+	}
+
+
+	public void setPhai(String phai) {
+		this.phai = phai;
+	}
+
+
+	public int getTuoi() {
+		return tuoi;
+	}
+
+
+	public void setTuoi(int tuoi) {
+		this.tuoi = tuoi;
+	}
+
+
+	public double getTienLuong() {
+		return tienLuong;
+	}
+
+
+	public void setTienLuong(double tienLuong) {
+		this.tienLuong = tienLuong;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return String.format("Nhân viên [MaNV = %s, HoNV = %s, TenNV = %s, Phai = %s, Tuoi = %d, Tien luong = %.2lf", maNV, hoNV, tenNV, phai, tuoi, tienLuong);
+	}
+	
+	public static void main(String[] args) {
+		NV1 = new NhanVien("NV01", "Duong Hoang", "Lan Anh", null, 0, 0)
+	}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="showMessage"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="showMessage"/>
+			<item value="cbbmaSach"/>
+			<item value="pnInfo.add(b);"/>
+			<item value="getAllSinhVien"/>
+			<item value="createTable"/>
+			<item value="nv"/>
+			<item value="NhanVien"/>
+			<item value="TenNV"/>
+			<item value="MaNV"/>
+			<item value="tenNV"/>
+			<item value="maNV"/>
+			<item value="writeFile"/>
+			<item value="sua"/>
+			<item value="SuaSach"/>
+			<item value="suaSach"/>
+		</list>
+		<list key="replacehistory">
+			<item value="sv"/>
+			<item value="SinhVien"/>
+			<item value="TenSV"/>
+			<item value="MaSV"/>
+			<item value="tenSV"/>
+			<item value="maSV"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1354"/>
+		<item key="DIALOG_Y_ORIGIN" value="189"/>
+		<item key="DIALOG_WIDTH" value="412"/>
+		<item key="DIALOG_HEIGHT" value="410"/>
+		<item key="DIALOG_FONT_NAME" value="1|JetBrains Mono Medium|9.75|0|WINDOWS|1|-13|0|0|0|500|0|0|0|0|3|2|1|49|JetBrains Mono Medium"/>
+	</section>
+</section>

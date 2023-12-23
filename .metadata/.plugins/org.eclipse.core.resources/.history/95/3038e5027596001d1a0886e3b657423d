@@ -1,0 +1,16 @@
+package demo.gui;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class BorderDemo {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Border Demo");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout());
+	}
+}

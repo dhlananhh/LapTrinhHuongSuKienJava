@@ -1,0 +1,45 @@
+package demo.gui;
+
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class DemoGridBagConstraints extends JPanel {
+	protected void makeButton (String name, GridBagLayout gridBag, GridBagConstraints c) {
+		JButton button = new JButton(name);
+		gridBag.setConstraints(button, c);
+		add(button);
+	}
+	
+	public DemoGridBagConstraints() {
+		GridBagLayout gridBag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		
+		setFont(new Font("SansSerif", Font.PLAIN, 14));
+		setLayout(gridBag);
+		
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 1.0;
+		makeButton("Button1", gridBag, c);
+		makeButton("Button2", gridBag, c);
+		makeButton("Button3", gridBag, c);
+		
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		makeButton("Button4", gridBag, c);
+		
+		c.weightx = 0.0;
+		makeButton("Button5", gridBag, c);
+		
+		c.gridwidth = GridBagConstraints.RELATIVE;
+		makeButton("Button6", gridBag, c);
+		
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		makeButton("Button7", gridBag, c);
+		
+		c.gridwidth = 1;
+		c.gridheight = 2;
+		c.weighty = 1.0;
+		makeButton("Button8", gridBag, c);
+	}
+}

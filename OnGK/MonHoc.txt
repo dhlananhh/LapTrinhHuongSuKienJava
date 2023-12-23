@@ -1,0 +1,2 @@
+1,Cau truc du lieu,Học kỳ 1,4
+2,Lap trinh Web,Học kỳ 1,4

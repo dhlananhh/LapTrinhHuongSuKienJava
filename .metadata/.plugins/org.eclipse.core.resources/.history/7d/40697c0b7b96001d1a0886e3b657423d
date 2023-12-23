@@ -1,0 +1,45 @@
+package demo.gui;
+
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+
+public class TextStatPanel extends JPanel implements ActionListener {
+	private JTextArea textArea;
+	private JButton updateButton;
+	private JLabel[] stats;
+	
+	
+	public static final String[] statLabels = {
+		"number of words: ",
+		"average word length: "
+	};
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = event.getSource;
+		
+	}
+	
+	
+	private void updateStatistics() {
+		String text = textArea.getText();
+		String[] words = text.split(" ");
+		float ave = (text.length() - words.length + 1.0f) / words.length;
+		stats[0].setText(String.valueOf(words.length));
+		stats[1].setText(String.valueOf(ave));
+	}
+	
+	
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Text Statistics");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		TextStatPanel panel = new TextStatPanel();
+		frame.getContentPane().add(panel);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+}

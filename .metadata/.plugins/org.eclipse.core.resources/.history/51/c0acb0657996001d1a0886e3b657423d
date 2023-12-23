@@ -1,0 +1,9 @@
+package demo.gui;
+
+
+import java.awt.*;
+
+
+public class TextStatPanel {
+
+}

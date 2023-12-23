@@ -1,0 +1,17 @@
+package quanLyMayTinh;
+
+public class MayTinh_Database {
+	public MayTinh_Database() {
+		super();
+	}
+	
+	
+	//Đọc file
+	public DanhSachMayTinh readFile (String part) throws Exception {
+		DanhSachMayTinh ds = new DanhSachMayTinh();
+	}
+	
+	
+	
+	//Ghi file
+}

@@ -1,0 +1,8 @@
+colorCustomKeywords=255,128,128
+colorDataType=255,128,192
+colorNormalText=255,255,255
+colorStatement=255,0,0
+colorTargets=0,128,255
+colorWhereBlock=255,0,0
+eclipse.preferences.version=1
+styleDataType=bold_italic

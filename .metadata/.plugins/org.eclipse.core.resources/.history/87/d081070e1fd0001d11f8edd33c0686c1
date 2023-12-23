@@ -1,0 +1,10 @@
+package quanLyMayTinh;
+
+public class MayTinh_Database {
+	public MayTinh_Database() {
+		super();
+	}
+	
+	
+	
+}

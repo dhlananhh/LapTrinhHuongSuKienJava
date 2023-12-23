@@ -1,0 +1,36 @@
+package demo.gui;
+
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+public class BorderDemo {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Border Demo");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(0, 2, 5, 10));
+		panel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+		
+		JPanel p1 = new JPanel();
+		p1.setBorder(BorderFactory.createLineBorder(Color.red, 3));
+		p1.add(new JLabel("Line Border"));
+		panel.add(p1);
+		
+		JPanel p2 = new JPanel();
+		p2.setBorder(BorderFactory.createLineBorder(Color.red, 3));
+		p2.add(new JLabel("Etched Border"));
+		panel.add(p2);
+		
+		JPanel p3 = new JPanel();
+		p3.setBorder(BorderFactory.createLineBorder(Color.red, 3));
+		p3.add(new JLabel("Line Border"));
+		panel.add(p3);
+	}
+}

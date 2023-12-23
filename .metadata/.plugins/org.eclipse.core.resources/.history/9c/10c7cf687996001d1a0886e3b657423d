@@ -1,0 +1,10 @@
+package demo.gui;
+
+
+import java.awt.*;
+import javax.swing.*;
+import
+
+public class TextStatPanel {
+
+}

@@ -1,0 +1,41 @@
+package duongHoangLanAnh_21087481_tuan2;
+
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+
+public class PhongToChuc extends JFrame implements ActionListener {
+	public PhongToChuc() {
+		setTitle("Phòng tổ chức");
+		setSize(700,500);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		createTable();
+	}
+	
+	
+	public void createTable() {
+		JPanel pnTable = new JPanel();
+		model = new DefaultTableModel();
+		table = new JTable(model);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public static void main(String[] args) {
+		new PhongToChuc().setVisible(true);
+	}
+}

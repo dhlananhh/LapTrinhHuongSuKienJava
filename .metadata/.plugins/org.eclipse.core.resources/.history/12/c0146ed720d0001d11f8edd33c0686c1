@@ -1,0 +1,22 @@
+package quanLyMayTinh;
+
+import java.io.File;
+
+public class MayTinh_Database {
+	public MayTinh_Database() {
+		super();
+	}
+	
+	
+	//Đọc file
+	public DanhSachMayTinh readFile (String part) throws Exception {
+		DanhSachMayTinh ds = new DanhSachMayTinh();
+		File f = new File(part);
+		
+		return ds;
+	}
+	
+	
+	
+	//Ghi file
+}

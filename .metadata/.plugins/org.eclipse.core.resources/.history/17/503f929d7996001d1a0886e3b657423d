@@ -1,0 +1,24 @@
+package demo.gui;
+
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+
+public class TextStatPanel extends JPanel implements ActionListener {
+	private JTextArea textArea;
+	private JButton updateButton;
+	private JLabel[] stats;
+	
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

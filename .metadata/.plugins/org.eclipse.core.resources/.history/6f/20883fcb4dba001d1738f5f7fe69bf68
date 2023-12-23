@@ -1,0 +1,23 @@
+package duongHoangLanAnh_21087481_tuan3;
+
+public class NhanVien {
+	private String maNV;
+	private String hoNV;
+	private String tenNV;
+	private String phai;
+	private int tuoi;
+	private double tienLuong;
+	
+
+	public NhanVien(String maNV, String hoNV, String tenNV, String phai, int tuoi, double tienLuong) {
+		super();
+		this.maNV = maNV;
+		this.hoNV = hoNV;
+		this.tenNV = tenNV;
+		this.phai = phai;
+		this.tuoi = tuoi;
+		this.tienLuong = tienLuong;
+	}
+	
+	
+}
